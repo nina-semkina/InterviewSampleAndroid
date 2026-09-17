@@ -12,7 +12,6 @@ import androidx.navigation.compose.rememberNavController
 import com.rumpilstilstkin.interviewsample.ui.details.DetailsScreen
 import com.rumpilstilstkin.interviewsample.ui.details.DetailsViewModel
 import com.rumpilstilstkin.interviewsample.ui.list.ListScreen
-import com.rumpilstilstkin.interviewsample.ui.list.ListViewModel
 
 @Composable
 fun SampleNavHost(
@@ -27,11 +26,7 @@ fun SampleNavHost(
         popExitTransition = { fadeOut(animationSpec = tween(300)) },
     ) {
         composable<SamplesScreen.ListRoute> {
-            val viewModel: ListViewModel = hiltViewModel()
-            ListScreen(
-                items = viewModel.items,
-                onItemClick = { id -> navController.navigate(SamplesScreen.DetailsRoute(id)) },
-            )
+            ListScreen()
         }
         composable<SamplesScreen.DetailsRoute> {
             val viewModel: DetailsViewModel = hiltViewModel()
